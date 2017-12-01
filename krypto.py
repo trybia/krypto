@@ -48,6 +48,18 @@ class KursyGen(object):
         resp.status = falcon.HTTP_200
         resp.body = json.dumps(kursy)
 
+def parsuj(kursy):
+    html = '<table>'
+
+    for kurs in kursy:
+        html += '<tr><td>' +kurs+ '</td><td>' +str(kursy[kurs]) + '</td></tr>'
+
+    html += '</table>'
+
+    print(html)
+
+parsuj(pobierz())
+
 
 # falcon.API instances are callable WSGI apps
 #wsgi_app = api = falcon.API()
