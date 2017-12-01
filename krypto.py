@@ -46,7 +46,8 @@ class KursyGen(object):
     def on_get(self, req, resp):
         """Handles GET requests"""
         resp.status = falcon.HTTP_200
-        resp.body = json.dumps(kursy)
+        resp.content_type = 'text/html'
+        resp.body = parsuj(pobierz())
 
 def parsuj(kursy):
     html = '<table>'
@@ -56,16 +57,15 @@ def parsuj(kursy):
 
     html += '</table>'
 
-    print(html)
+    return html
 
-parsuj(pobierz())
 
 
 # falcon.API instances are callable WSGI apps
-#wsgi_app = api = falcon.API()
+wsgi_app = api = falcon.API()
 
 # Resources are represented by long-lived class instances
-#handler = KursyGen()
+handler = KursyGen()
 
 # things will handle all requests to the '/things' URL path
-#api.add_route('/', handler)
+api.add_route('/', handler)
