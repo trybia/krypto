@@ -62,7 +62,7 @@ def parsuj(kursy):
 
 
 # falcon.API instances are callable WSGI apps
-wsgi_app = api = falcon.API()
+api = application = falcon.API()
 
 # Resources are represented by long-lived class instances
 handler = KursyGen()
