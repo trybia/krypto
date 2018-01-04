@@ -18,6 +18,12 @@ def pobierz():
         'XLTCZEUR_Kraken': 'https://api.kraken.com/0/public/Ticker?pair=LTCEUR',
         'XETHZEUR_Kraken': 'https://api.kraken.com/0/public/Ticker?pair=ETHEUR',
         'BCHEUR_Kraken': 'https://api.kraken.com/0/public/Ticker?pair=BCHEUR',
+        'BCH-USD_Gdax': 'https://api.gdax.com/products/BCH-USD/ticker',
+        'BTC-USD_Gdax': 'https://api.gdax.com/products/BTC-USD/ticker',
+        'ETH-USD_Gdax': 'https://api.gdax.com/products/ETH-USD/ticker',
+        'LTC-USD_Gdax': 'https://api.gdax.com/products/LTC-USD/ticker',
+        'DASHPLN_Bitbay': 'https://bitbay.net/API/Public/DASHPLN/ticker.json',
+        
 
     }
 
