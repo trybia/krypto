@@ -23,7 +23,13 @@ def pobierz():
         'ETH-USD_Gdax': 'https://api.gdax.com/products/ETH-USD/ticker',
         'LTC-USD_Gdax': 'https://api.gdax.com/products/LTC-USD/ticker',
         'DASHPLN_Bitbay': 'https://bitbay.net/API/Public/DASHPLN/ticker.json',
-        
+        'USDT-BTC_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-BTC',
+        'USDT-LTC_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-LTC',
+        'USDT-ETH_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-ETH',
+        'USDT-BCC_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-BCC',
+        'USDT-DASH_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-DASH',
+
+
 
     }
 
@@ -40,10 +46,14 @@ def pobierz():
         elif "Gdax" in kurs:
             wartosc = result['price']
         elif "Kraken" in kurs:
-            # print(result)
-            wartosc = result['result'][kurs.split("_")[0]]['c'][0]
-        kursy[kurs] = wartosc
+            if not result['error'][0] == "":
+                wartosc = 'error'
+            else:
+                wartosc = result['result'][kurs.split("_")[0]]['c'][0]
+        elif "Bittrex" in kurs:
+            wartosc = result['result']['Last']
 
+        kursy[kurs] = wartosc
 
     return kursy
 
