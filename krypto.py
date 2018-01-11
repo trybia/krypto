@@ -28,9 +28,14 @@ def pobierz():
         'USDT-ETH_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-ETH',
         'USDT-BCC_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-BCC',
         'USDT-DASH_Bittrex': 'https://bittrex.com/api/v1.1/public/getticker?market=USDT-DASH',
-
-
-
+        'BTC-USD_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/btcusd',
+        'LTC-USD_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/ltcusd',
+        'ETH-USD_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/ethusd',
+        'BCH-USD_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/bchusd',
+        'BTC-EUR_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/btceur',
+        'LTC-EUR_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/ltceur',
+        'ETH-EUR_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/etheur',
+        'BCH-EUR_Bitstamp': 'https://www.bitstamp.net/api/v2/ticker/bcheur',
     }
 
     kursy={}
@@ -41,7 +46,7 @@ def pobierz():
         # print(kurs, r.text)
         result = json.loads(r.text)
         # kursy[kurs]=int(result['last'])
-        if "Bitbay" in kurs or "BitMarket" in kurs:
+        if "Bitbay" in kurs or "BitMarket" in kurs or "Bitstamp" in kurs:
             wartosc = result['last']
         elif "Gdax" in kurs:
             wartosc = result['price']
