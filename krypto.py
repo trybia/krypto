@@ -41,22 +41,22 @@ def pobierz():
     kursy={}
 
     for kurs in urls.keys():
-        r = requests.get(url=urls[kurs])
+        try:
+            r = requests.get(url=urls[kurs])
 
         # print(kurs, r.text)
-        result = json.loads(r.text)
-        # kursy[kurs]=int(result['last'])
-        if "Bitbay" in kurs or "BitMarket" in kurs or "Bitstamp" in kurs:
-            wartosc = result['last']
-        elif "Gdax" in kurs:
-            wartosc = result['price']
-        elif "Kraken" in kurs:
-            if not result['error'][0] == "":
-                wartosc = 'error'
-            else:
+            result = json.loads(r.text)
+            if "Bitbay" in kurs or "BitMarket" in kurs or "Bitstamp" in kurs:
+                wartosc = result['last']
+            elif "Gdax" in kurs:
+                wartosc = result['price']
+            elif "Kraken" in kurs:
                 wartosc = result['result'][kurs.split("_")[0]]['c'][0]
-        elif "Bittrex" in kurs:
-            wartosc = result['result']['Last']
+            elif "Bittrex" in kurs:
+                wartosc = result['result']['Last']
+        except:
+            wartosc = 'error'
+
 
         kursy[kurs] = wartosc
 
